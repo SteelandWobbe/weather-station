@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="../static/normalize.css">
+    <link rel="stylesheet" href="../static/css.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="navitems_middle">
+        <a href="{{ url_for('home') }}">
+            <div class="navitem">Home</div>
+        </a>
+        <a href="{{ url_for('data') }}">
+            <div class="navitem">Data</div>
+        </a>
+        <a href="{{ url_for('forecast') }}">
+            <div class="navitem">Forecast</div>
+        </a>
+        <a href="{{ url_for('settings') }}">
+            <div class="navitem">Settings</div>
+        </a>
+    </div>
+    <a href="">
+        <div class="navitem_last">Logout</div>
+    </a>
+</nav>
+<div class="body">
+    {% block body %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

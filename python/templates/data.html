@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% from 'macro/macro.html' import make_data_graph %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+    {#  DATA CHART  #}
+    <div class="data_option">
+        <form action="{{ url_for('data_graph') }}" method="post">
+
+            <label for="temperature">Temperatuur: </label>
+            <input type="checkbox" id="temperature" name="temperature">
+
+            <label for="humidity">Vochtigheid: </label>
+            <input type="checkbox" id="humidity" name="humidity">
+
+            <label for="light">Lichtsterkte: </label>
+            <input type="checkbox" id="light" name="light">
+
+
+            <label for="datetime_start">Begin datum: </label>
+            <input type="date" name="datetime_start" id="datetime_start">
+
+            <label for="datetime_stop">Eind datum: </label>
+            <input type="date" name="datetime_stop" id="datetime_stop">
+
+            <label for="submit"></label>
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class="graph_container">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+        <canvas id="chart"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById("chart").getContext('2d');
+        ctx.canvas.width = '';
+        new Chart(ctx, {
+            responsive: true,
+            type: 'line',
+            maintainAspectRatio: false,
+            {{ make_data_graph(data, labels) }}
+        });
+    </script>
+{% endblock %}

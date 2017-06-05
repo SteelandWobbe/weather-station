@@ -1,0 +1,67 @@
+:root {
+    --width_nav: 200px;
+}
+
+/*NAV*/
+
+.nav {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: var(--width_nav);
+}
+
+.nav .navitems_middle {
+    position: absolute;
+    top: 50%;
+    margin-top: -100px; /* half of content height  STAAT NOG NIET GOED*/
+    left: 0;
+    width: 100%;
+}
+
+.nav .navitems_middle .navitem {
+    background-color: red;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+}
+
+.nav .navitem_last {
+    background-color: green;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 90%;
+    margin-top: 0; /* half of content height  STAAT NOG NIET GOED*/
+    left: 0;
+}
+
+/*BODY*/
+
+.body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--width_nav);
+    right: 0;
+}
+
+.body canvas {
+    background-color: orange;
+    position: absolute;
+    bottom: 0;
+    max-height: 100%;
+}
+
+.body .data_option{
+    background-color: pink;
+    width: 100%;
+    height: 50px;
+}
+
+.body .graph_container{
+    height: calc(100% - 50px);
+}
