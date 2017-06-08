@@ -15,6 +15,7 @@ class DbClass:
         self.__cursor = self.__connection.cursor()
 
     def get_types(self):
+        self.__cursor = self.__connection.cursor()
         self.__cursor.callproc('return_type')
         result = []
         for a in self.__cursor.stored_results():
@@ -39,6 +40,12 @@ class DbClass:
             result.append(a.fetchall())
         return result[0]
 
+    def get_last_measurement(self, type):
+        self.__cursor.callproc('get_last_measurement', [type])
+        result = []
+        for a in self.__cursor.stored_results():
+            result.append(a.fetchall())
+        return result[0]
 
 
         # def getDataFromDatabase(self):

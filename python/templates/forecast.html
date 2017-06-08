@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% from 'macro/macro.html' import %}
 
 {% block title %}
 
@@ -7,5 +7,81 @@
 
 
 {% block body %}
-<h1>FORECAST</h1>
+    <div class="form_location">
+        <form action="{{ url_for('forecast_w_data') }}" method="post">
+
+            <label for="location">Locatie: </label>
+            <input type="text" id="location" name="location">
+
+            <label for="submit"></label>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+
+    {##}
+    {#    <div class="container">#}
+    {#        <div class="tile">#}
+    {##}
+    {#        </div#}
+    {#        ><div class="tile">#}
+    {##}
+    {#        </div#}
+    {#        ><div class="tile">#}
+    {##}
+    {#        </div#}
+    {#        ><div class="tile">#}
+    {##}
+    {#        </div#}
+    {#        ><div class="tile">#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
+
+
+    {#    <form action="{{ url_for('forecast_w_data') }}" method="post">#}
+    {#        inpu#}
+    {##}
+    {#    </form>#}
+
+
+    <div id="weather" class="container">
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+
+    <script>
+        $(function () {
+            $.simpleWeather({
+                location: '{{ location }}',
+                unit: 'c',
+                success: function (weather) {
+
+                    html = '<div class="tile">';
+                    html += '<h1>'+ weather.forecast[0].day + '</h1>';
+                    html += '<p>Min. temperatuur: ' + weather.low + '</p>';
+                    html += '<p> ' + weather.todayCode +'</p>';
+                    html += '<p> ' + +'</p>';
+                    html += '<p> ' + +'</p>';
+                    html += '<p> ' + +'</p>';
+                    html += '<p> ' + +'</p>';
+                    html += '<p> ' + +'</p>';
+
+
+                    html += '</div>';
+
+
+                    $("#weather").html(html);
+                },
+                error: function (error) {
+                    $("#weather").html('<p>' + error.message + '</p>');
+                }
+            });
+        });
+
+    </script>
+
+
 {% endblock %}

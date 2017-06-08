@@ -7,6 +7,22 @@
 
 {% block body %}
 
-    <h1>HOME</h1>
+        <div class="tiles_container">
+            <div class="tile" style="background-color: pink">
+                <img src="../static/img/temp.png" alt="" >
+                <h1>Temperatuur</h1>
+                <h2>{{ temp }}&deg;C</h2>
+            </div
+            ><div class="tile" style="background-color: gold">
+                <img src="../static/img/hum.png" alt="">
+                <h1>Vochtigheid</h1>
+                <h2>{{ hum }}%</h2>
+            </div
+            ><div class="tile" style="background-color: chocolate">
+                <img src="../static/img/light.png" alt="">
+                <h1>Lichtsterkte</h1>
+                <h2>{{ light }} Lux</h2>
+            </div
+        ></div>
 
 {% endblock %}

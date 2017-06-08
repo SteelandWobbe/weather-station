@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+adsg
+
+<div id="weather"></div>
+<script>
+
+    $(document).ready(function () {
+        $.simpleWeather({
+            location: 'Austin, TX',
+            woeid: '',
+            unit: 'f',
+            success: function (weather) {
+                html = '<p>' + weather.temp + '&deg;' + weather.units.temp + '</p>';
+                $("#weather").html(html);
+            },
+            error: function (error) {
+                $("#weather").html('<p>' + error + '</p>');
+            }
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

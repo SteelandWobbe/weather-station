@@ -1,0 +1,160 @@
+:root {
+    --width_nav: 200px;
+}
+
+/*NAV*/
+
+.nav {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: var(--width_nav);
+}
+
+.nav .navitems_middle {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav .navitems_middle .navitem {
+    background-color: red;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+}
+
+.nav .navitem_last {
+    background-color: green;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 90%;
+    margin-top: 0; /* half of content height  STAAT NOG NIET GOED*/
+    left: 0;
+}
+
+/*DATA*/
+
+.body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--width_nav);
+    right: 0;
+}
+
+.body canvas {
+    background-color: orange;
+    position: absolute;
+    bottom: 0;
+    max-height: 100%;
+}
+
+.body .data_option {
+    background-color: pink;
+    width: 100%;
+    height: 50px;
+}
+
+.body .graph_container {
+    height: calc(100% - 50px);
+}
+
+/* HOME */
+
+.body .tiles_container {
+    background-color: cyan;
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*.body .tiles_container .tile_left {*/
+/*background-color: darkblue;*/
+/*width: calc(100%/3);*/
+/*height: 100%;*/
+/*float: left;*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*flex-direction: column;*/
+/*}*/
+
+/*.body .tiles_container .tile_middle {*/
+/*background-color: darkblue;*/
+/*left: 0;*/
+/*right: 0;*/
+/*position: absolute;*/
+/*width: calc(100%/3);*/
+/*height: 100%;*/
+/*margin: 0 auto;*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*flex-direction: column;*/
+/*}*/
+
+/*.body .tiles_container .tile_right {*/
+/*background-color: darkblue;*/
+/*width: calc(100%/3);*/
+/*height: 100%;*/
+/*float: right;*/
+/*display: inline-flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*flex-direction: column;*/
+/*}*/
+
+.body .tiles_container .tile {
+    width: calc(100%/3);
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body .tiles_container .tile img {
+    display: block;
+    width: 90%;
+    height: 40%;
+    object-fit: contain;
+}
+
+
+/* forecast */
+
+.body .form_location{
+    background-color: pink;
+    text-align: center;
+    height: 3%;
+}
+
+.body .container{
+   background-color: cyan;
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 52.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.body .container .tile{
+    background-color: orange;
+    width: calc(100%/5);
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
