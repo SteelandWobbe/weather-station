@@ -1,17 +1,48 @@
 :root {
-    --width_nav: 200px;
+    --nav_width: 200px;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    margin: 0 0 3px 0;
+    font-size: 1em;
+}
+
+.failed { /* used on login and register */
+    background-color: crimson;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -90%);
+}
+
+#active { /* active menu item */
+    background-color: var(--color_active);
 }
 
 /*NAV*/
 
 .nav {
-    background-color: black;
+    --padding_left_navitem: 0.5em;
+    --color_text: #eee;
+    --color_background: #333;
+    --color_active: #888;
+    --font_size: 1.5em;
+    --navitem_height: 1.7em;
+}
+
+.nav {
+    background-color: var(--color_background);
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    width: var(--width_nav);
+    width: var(--nav_width);
+    font-size: var(--font_size);
 }
 
 .nav .navitems_middle {
@@ -22,53 +53,124 @@
 }
 
 .nav .navitems_middle .navitem {
-    background-color: red;
-    width: 100%;
-    height: 30px;
-    margin: 10px 0;
+    color: var(--color_text);
+    width: calc(100% - var(--padding_left_navitem));
+    height: var(--navitem_height);
+    line-height: var(--navitem_height); /* center text vertically */
+    white-space: nowrap;
+    padding-left: 0.5em;
+}
+
+.nav .navitems_middle a {
+    text-decoration: none;
+}
+
+.nav_item_hover:hover {
+    background-color: var(--color_active);
 }
 
 .nav .navitem_last {
-    background-color: green;
-    width: 100%;
-    height: 30px;
+    width: calc(100% - var(--padding_left_navitem));
+    height: var(--navitem_height);
     position: absolute;
-    top: 90%;
-    margin-top: 0; /* half of content height  STAAT NOG NIET GOED*/
-    left: 0;
+    bottom: 0;
+    padding-left: var(--padding_left_navitem);
+    color: var(--color_text);
+
+    line-height: var(--navitem_height); /* center text vertically */
+    white-space: nowrap;
 }
 
-/*DATA*/
-
+/* BODY */
 .body {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: var(--width_nav);
+    left: var(--nav_width);
     right: 0;
 }
 
-.body canvas {
-    background-color: orange;
+/*DATA*/
+.data {
+    --height_options: 10%;
+}
+
+.data {
+    height: 100%;
+    width: 100%;
+}
+
+.data h1 {
+    margin: 0 0 3px 0;
+}
+
+.data .dates {
+    position: absolute;
+    display: inline-block;
+    width: 45%;
+    height: var(--height_options);
+    text-align: center;
+}
+
+.data .dates .date {
+    display: inline-flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.data .dates .date label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data .values {
+    position: absolute;
+    left: 45%;
+    display: inline-block;
+    width: 45%;
+    height: var(--height_options);
+    text-align: center;
+}
+
+.data .values .value {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.data .submit {
+    display: inline-flex;
+    position: absolute;
+    right: 0;
+    height: var(--height_options);
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+.data canvas {
     position: absolute;
     bottom: 0;
-    max-height: 100%;
+    max-height: 90%;
 }
 
-.body .data_option {
-    background-color: pink;
-    width: 100%;
-    height: 50px;
-}
+@media screen and (max-width: 1472px) {
+    .data canvas {
+        max-height: 85%;
+    }
 
-.body .graph_container {
-    height: calc(100% - 50px);
+    .data {
+        --height_options: 15%;
+    }
 }
 
 /* HOME */
 
 .body .tiles_container {
-    background-color: cyan;
+    /*background-color: cyan;*/
     width: 95%;
     height: 95%;
     position: absolute;
@@ -77,44 +179,8 @@
     transform: translate(-50%, -50%);
 }
 
-/*.body .tiles_container .tile_left {*/
-/*background-color: darkblue;*/
-/*width: calc(100%/3);*/
-/*height: 100%;*/
-/*float: left;*/
-/*display: flex;*/
-/*justify-content: center;*/
-/*align-items: center;*/
-/*flex-direction: column;*/
-/*}*/
-
-/*.body .tiles_container .tile_middle {*/
-/*background-color: darkblue;*/
-/*left: 0;*/
-/*right: 0;*/
-/*position: absolute;*/
-/*width: calc(100%/3);*/
-/*height: 100%;*/
-/*margin: 0 auto;*/
-/*display: flex;*/
-/*justify-content: center;*/
-/*align-items: center;*/
-/*flex-direction: column;*/
-/*}*/
-
-/*.body .tiles_container .tile_right {*/
-/*background-color: darkblue;*/
-/*width: calc(100%/3);*/
-/*height: 100%;*/
-/*float: right;*/
-/*display: inline-flex;*/
-/*justify-content: center;*/
-/*align-items: center;*/
-/*flex-direction: column;*/
-/*}*/
-
 .body .tiles_container .tile {
-    width: calc(100%/3);
+    width: calc(100% / 3);
     height: 100%;
     display: inline-flex;
     justify-content: center;
@@ -129,32 +195,253 @@
     object-fit: contain;
 }
 
-
 /* forecast */
 
-.body .form_location{
-    background-color: pink;
-    text-align: center;
-    height: 3%;
-}
-
-.body .container{
-   background-color: cyan;
-    width: 90%;
-    height: 90%;
-    position: absolute;
-    top: 52.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.body .container .tile{
-    background-color: orange;
-    width: calc(100%/5);
+.forecast {
+    width: 100%;
     height: 100%;
+}
+
+.forecast h1 {
+    margin: 0;
+}
+
+.forecast img{
+    object-fit: contain;
+    height: 100%;
+}
+
+.forecast .form_location {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast .weather_container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.forecast .now {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+}
+
+.forecast .img {
     display: inline-flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 36px);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.forecast .weather_currently {
+    position: absolute;
+    width: 40%;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast .location {
+    display: inline-flex;
+    height: 36px;
+    width: 60%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast .text {
+    display: inline-flex;
+    width: 60%;
+    height: calc(100% - 36px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.forecast .weather_forecast {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+}
+
+.forecast .tile {
+    height: 100%;
+    width: calc(100% / 5);
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.forecast .weather_icon{
+    width: 128px;
+    height: 128px;
+}
+
+/* SETTINGS */
+
+.settings {
+    height: 100%;
+    width: 95%;
+    padding-left: 5%;
+}
+
+.settings h1 {
+    margin: 0 0 10px 0;
+}
+
+.settings label {
+    width: 120px;
+    display: inline-block;
+    text-align: left;
+}
+
+.settings .input {
+    margin-bottom: 5px;
+}
+
+/* LOGIN */
+
+.login {
+    /*background-color: #ddd;*/
+    border: black 1px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 320px;
+    width: 500px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.login input {
+    width: 90%;
+    margin-left: 5%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: black 1px solid;
+    font-size: 2em;
+}
+
+.login .button_register {
+    background-color: #333;
+    color: white;
+    width: 50%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 50px;
+    white-space: nowrap;
+}
+
+.login .hover:hover {
+    background-color: #888;
+}
+
+.login .button_login {
+    background-color: #333;
+    font-size: 1em;
+    color: white;
+    width: 50%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.login h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+/* REGISTER */
+
+.register {
+    border: black 1px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 380px;
+    width: 500px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.register h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+.register input {
+    width: 90%;
+    margin-left: 5%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: black 1px solid;
+    font-size: 2em;
+}
+
+.register .button {
+    background-color: #333;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 50px;
+}
+
+.register .button_register {
+    font-size: 1em;
+    right: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.register .button_login {
+    text-align: center;
+    line-height: 50px;
+    white-space: nowrap;
+    left: 0;
+}
+
+.register .button:hover {
+    background-color: #888;
 }
 
