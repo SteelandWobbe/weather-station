@@ -3,7 +3,7 @@ import DbClass
 from passlib.hash import pbkdf2_sha512
 import random
 import string
-# import simplejson               needs to be installed for decimal support to json; does not need to be imported
+# import simplejson               has to be installed, not imported
 
 
 app = f.Flask(__name__)
