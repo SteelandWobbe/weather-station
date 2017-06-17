@@ -1,4 +1,4 @@
-float temperature, humidity, pressure, light;
+float temperature, humidity, light;
 
 
 // DHT22
@@ -10,12 +10,10 @@ DHT dht(2, DHT22);   //DHT dht22(PIN, DHTTYPE)
 #include <Adafruit_TSL2561_U.h>
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 1);
 
-// BME280
-#include <stdint.h>
-#include "SparkFunBME280.h"
-#include "SPI.h"
-BME280 bme;
-
+//LCD
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x3f, 16, 4);
 
 
 void setup() {
@@ -26,29 +24,27 @@ void setup() {
   }
   // DHT22
   dht.begin();
-
   // TSL2561
   tsl.begin();
   tsl.enableAutoRange(true);
   tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_101MS);
-
-  //BME280
-  bme.settings.commInterface = I2C_MODE;
-  bme.settings.I2CAddress = 0x76;
-  bme.settings.runMode = 3;
-  bme.settings.tStandby = 0;
-  bme.settings.filter = 0;
-  bme.settings.tempOverSample = 5;
-  bme.settings.pressOverSample = 5;
-  bme.settings.humidOverSample = 5;
-  bme.begin();
+   // LCD
+  lcd.begin();
 }
 
 void loop() {
   if (Serial.available()) {
+    temperature = read_temp();
+    humidity = read_humidity();
+    light = read_light();
+    Serial.print(String(temperature) + ";" + String(humidity) + ";" + String(light) + "\n");
+    lcd.setCursor(0, 0);
+    lcd.print("Temp: " + String(temperature));
+    lcd.setCursor(0, 1);
+    lcd.print("Rel. lv: " + String(humidity));
+    lcd.setCursor(-4, 2);
+    lcd.print("Licht: " + String(light));
     Serial.read();
-    Serial.print(String(read_temp()) + ";" + String(read_humidity()) + ";" + String(read_light())/* + "," + String(read_pressure) */+ "\n");
-    delay(500);
   }
 }
 
@@ -64,8 +60,4 @@ float read_light() {
   sensors_event_t event;
   tsl.getEvent(&event);
   return event.light;
-}
-
-float read_pressure() {
-  return bme.readFloatPressure();
 }
