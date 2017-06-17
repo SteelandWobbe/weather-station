@@ -111,7 +111,7 @@ h2 {
 .body {
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: var(--footer_height);
     left: var(--nav_width);
     right: 0;
 }
