@@ -1,6 +1,5 @@
 float temperature, humidity, light;
 
-
 // DHT22
 #include "DHT.h"
 DHT dht(2, DHT22);   //DHT dht22(PIN, DHTTYPE)
