@@ -1,5 +1,6 @@
 :root {
     --nav_width: 200px;
+    --footer_height: 1.2em;
 }
 
 h1 {
@@ -24,6 +25,24 @@ h2 {
     background-color: var(--color_active);
 }
 
+/* FOOTER */
+
+.footer {
+    height: var(--footer_height);
+    width: calc(100% - var(--nav_width));
+    background-color: #333;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    font-size: 0.7em;
+}
+
+.footer a {
+    color: #eee;
+    text-decoration: none;
+}
+
 /*NAV*/
 
 .nav {
@@ -43,6 +62,7 @@ h2 {
     left: 0;
     width: var(--nav_width);
     font-size: var(--font_size);
+    z-index: 1;
 }
 
 .nav .navitems_middle {
@@ -154,7 +174,8 @@ h2 {
 .data canvas {
     position: absolute;
     bottom: 0;
-    max-height: 90%;
+    height: 90%;
+    max-height: calc(100% - var(--height_options));
 }
 
 @media screen and (max-width: 1472px) {
@@ -170,7 +191,6 @@ h2 {
 /* HOME */
 
 .body .tiles_container {
-    /*background-color: cyan;*/
     width: 95%;
     height: 95%;
     position: absolute;
@@ -206,7 +226,7 @@ h2 {
     margin: 0;
 }
 
-.forecast img{
+.forecast img {
     object-fit: contain;
     height: 100%;
 }
@@ -242,7 +262,6 @@ h2 {
     position: absolute;
     left: 0;
     bottom: 0;
-    overflow: hidden;
 }
 
 .forecast .weather_currently {
@@ -295,7 +314,7 @@ h2 {
     flex-direction: column;
 }
 
-.forecast .weather_icon{
+.forecast .weather_icon {
     width: 128px;
     height: 128px;
 }
@@ -346,6 +365,7 @@ h2 {
     margin-bottom: 10px;
     border: black 1px solid;
     font-size: 2em;
+    border-radius: 5px;
 }
 
 .login .button_register {
@@ -375,6 +395,7 @@ h2 {
     bottom: 0;
     right: 0;
     margin: 0;
+    border-radius: 0;
 
     border: none;
     cursor: pointer;
@@ -414,6 +435,7 @@ h2 {
     margin-bottom: 10px;
     border: black 1px solid;
     font-size: 2em;
+    border-radius: 5px;
 }
 
 .register .button {
@@ -423,6 +445,7 @@ h2 {
     bottom: 0;
     width: 50%;
     height: 50px;
+    border-radius: 0;
 }
 
 .register .button_register {
