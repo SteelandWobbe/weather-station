@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+    font-family: 'Arial', sans-serif;
+}
+
 :root {
-    --nav_width: 200px;
+    --nav_width: 220px;
     --footer_height: 1.2em;
 }
 
@@ -332,7 +338,7 @@ h2 {
 }
 
 .settings label {
-    width: 120px;
+    width: 160px;
     display: inline-block;
     text-align: left;
 }
