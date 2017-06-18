@@ -37,6 +37,7 @@ void loop() {
     humidity = read_humidity();
     light = read_light();
     Serial.print(String(temperature) + ";" + String(humidity) + ";" + String(light) + "\n");
+    lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Temp: " + String(temperature));
     lcd.setCursor(0, 1);
