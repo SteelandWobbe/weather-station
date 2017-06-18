@@ -144,6 +144,4 @@ def register():
 
 
 app.secret_key = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(128))
-if __name__ == '__main__':
-    app.run(host='0.0.0.0',
-            port=80)
+app.run(host='0.0.0.0', port=80)
