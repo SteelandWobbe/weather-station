@@ -80,8 +80,4 @@ def forecast_w_data():
 def settings():
     return f.render_template('settings.html')
 
-
-if __name__ == '__main__':
-    app.run(
-        host='0.0.0.0'
-    )
+app.run(host='0.0.0.0', port='80')
